@@ -1,4 +1,4 @@
- function hiasan() {
+function hiasan() {
     alert('cuman hiasan wkwk.');
 }
 
@@ -32,3 +32,45 @@ window.onclick = function (event) {
         profilePopup.style.display = 'none';
     }
 }
+const textToType = "Moh Zaeni Sahrudin";
+        const textContainer = document.getElementById('text-container');
+        const typingText = document.getElementById('typing-text');
+
+        function typeText() {
+            let index = 0;
+            const typingSpeed = 200;
+
+            function typeCharacter() {
+                if (index < textToType.length) {
+                    typingText.textContent += textToType.charAt(index);
+                    index++;
+                    setTimeout(typeCharacter, typingSpeed);
+                }
+            }
+
+            typeCharacter();
+        }
+
+        typeText();
+        const audio = document.getElementById("myAudio");
+        const playButton = document.getElementById("playButton");
+        const playingText = document.getElementById("playingText");
+
+        playButton.addEventListener("click", () => {
+            // Cek apakah audio sedang dimainkan atau dijeda
+            if (audio.paused) {
+                // Mulai pemutaran audio
+                audio.play();
+                // Ganti gambar menjadi ikon pause
+                playButton.src = "https://i.ibb.co/zHqkBLw/images-1-removebg-preview.png";
+                // Tampilkan teks saat lagu dimainkan
+                playingText.style.display = "block";
+            } else {
+                // Jeda pemutaran audio
+                audio.pause();
+                // Ganti gambar menjadi ikon play
+                playButton.src = "https://i.ibb.co/0qPsQ5w/images-removebg-preview.png";
+                // Sembunyikan teks saat lagu dijeda
+                playingText.style.display = "none";
+            }
+        });
