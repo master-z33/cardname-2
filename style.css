@@ -64,7 +64,7 @@
         border-radius: 20px;
     }
 
-    .profile-box button {
+    .profile-box .button {
         background: blue;
         color: white;
         border: none;
