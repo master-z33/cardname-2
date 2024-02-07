@@ -74,3 +74,13 @@ const textToType = "Moh Zaeni Sahrudin";
                 playingText.style.display = "none";
             }
         });
+document.getElementById("icon").addEventListener("click", function() {
+        document.getElementById("popup").style.display = "block";
+    });
+
+    // Menyembunyikan popup saat diklik di luar gambar
+    document.getElementById("popup").addEventListener("click", function(e) {
+        if (e.target.id === "popup") {
+            this.style.display = "none";
+        }
+    });
