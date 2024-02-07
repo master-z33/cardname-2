@@ -75,13 +75,13 @@ const textToType = "Moh Zaeni Sahrudin";
             }
         });
 // JavaScript untuk menampilkan dan menyembunyikan popup
-document.getElementById("icon").addEventListener("click", function() {
-    document.getElementById("popup").classList.add("show"); // Tambahkan kelas "show"
-});
+    document.getElementById("icon").addEventListener("click", function() {
+        document.getElementById("popup").style.display = "block";
+    });
 
-// Menyembunyikan popup saat diklik di luar gambar
-document.getElementById("popup").addEventListener("click", function(e) {
-    if (e.target.id === "popup") {
-        this.classList.remove("show"); // Hapus kelas "show"
-    }
-});
+    // Menyembunyikan popup saat diklik di luar gambar
+    document.getElementById("popup").addEventListener("click", function(e) {
+        if (e.target.id === "popup") {
+            this.style.display = "none";
+        }
+    });
