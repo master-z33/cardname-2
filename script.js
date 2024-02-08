@@ -85,9 +85,31 @@ const textToType = "Moh Zaeni Sahrudin";
             this.style.display = "none";
         }
     });
-setInterval(myTimer, 1000);
+    setInterval(myTimer, 1000);
 
 function myTimer() {
   const d = new Date();
-  document.getElementById("jam").innerHTML = d.toLocaleTimeString();
+  document.getElementById("demo").innerHTML = d.toLocaleTimeString();
 }
+function toggleSharePopup() {
+    var popup = document.getElementById("sharePopup");
+    var textToShare = "liat website ini https://zhenkartunama.vercel.app";
+    
+    // Menetapkan teks yang akan digunakan di setiap tautan
+    var shareLinks = document.querySelectorAll(".share-popup a");
+    shareLinks.forEach(function(link) {
+        link.href += encodeURIComponent(textToShare);
+    });
+    
+    popup.classList.toggle("show");
+}
+
+// Menyembunyikan popup saat diklik di luar popup
+window.onclick = function(event) {
+    var popup = document.getElementById("sharePopup");
+    if (!event.target.matches('button') && !event.target.matches('.share-popup')) {
+        if (popup.classList.contains('show')) {
+            popup.classList.remove('show');
+        }
+    }
+            }
