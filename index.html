@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Kartu Nama</title>
 </head>
 <body>
@@ -25,12 +26,22 @@
                  <img id="icon" src="https://www.freepnglogos.com/uploads/whatsapp-icon-png-image-28.png" class="WhatsApp" style="cursor: pointer;">
                 <img src="https://raw.githubusercontent.com/reeoky/Card-Name/main/Img/tik-tok.png" class="tiktok" onclick="tik()">
             </div>
-            <button type="button"><p id="jam"></p></button>
+            <div id="button"><p id="jam"></p></div>
             <div class="profile-bottom">
                 <textarea style="border-color:white;" cols="30" rows="3">gak tau harus ngisi apa disini,ada saran buat diisi apa? kalo ada ketik aja disini</textarea>
             </div>
         </div>
     </div>
+                    <img src="https://i.ibb.co/4V5TKxk/images-2-removebg-preview.png" class="share" onclick="toggleSharePopup()">
+                    </img>
+                    <div id="sharePopup" class="share-popup">
+    <a href="https://wa.me/?text=" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://t.me/share/url?url=Kartu Nama&text=" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-telegram"></i>
+    </a>
+</div>
     <div id="popup" class="popup">
     <div class="popup-content">
         <img src="https://i.ibb.co/6ZfRgNT/Screenshot-20240207-082540.jpg" alt="Gambar">
