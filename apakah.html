@@ -3,79 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemutar Lagu</title>
-    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <title>Selamat Pop</title>
     <style>
-        .hide {
+        /* Gaya untuk selamat pop */
+        .selamatpop {
             display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+        }
+
+        /* Gaya untuk latar belakang selamat pop */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
         }
     </style>
 </head>
 <body>
 
-<img src="https://i.ibb.co/4V5TKxk/images-2-removebg-preview.png" alt="Icon Musik" id="togglePlaylist">
-
-<div id="playlist" class="hide">
-    <ul>
-        <li><button class="song" data-src="https://kosred.com/a/mlibtj.mp3">Lagu 1</button></li>
-        <li><button class="song" data-src="lagu2.mp3">Lagu 2</button></li>
-        <li><button class="song" data-src="lagu3.mp3">Lagu 3</button></li>
-    </ul>
+<!-- Selamat Pop -->
+<div class="overlay" id="overlay"></div>
+<div class="selamatpop" id="selamatpop">
+    <h2>Selamat <span id="greeting"></span></h2>
+    <p>Selamat datang di website kami!</p>
+    <button onclick="closeSelamatPop()">Tutup</button>
 </div>
 
-<button id="playPause">Play</button>
-
-<audio id="audioPlayer" controls>
-    Your browser does not support the audio element.
-</audio>
-
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const togglePlaylist = document.getElementById("togglePlaylist");
-        const playlist = document.getElementById("playlist");
-        const playPauseBtn = document.getElementById("playPause");
-        const audioPlayer = document.getElementById("audioPlayer");
-        const songs = document.querySelectorAll(".song");
-        let wavesurfer;
+    // Fungsi untuk menampilkan selamat pop
+    function showSelamatPop() {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("selamatpop").style.display = "block";
+    }
 
-        togglePlaylist.addEventListener("click", function() {
-            playlist.classList.toggle("hide");
-        });
+    // Fungsi untuk menutup selamat pop
+    function closeSelamatPop() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("selamatpop").style.display = "none";
+    }
 
-        songs.forEach(function(song) {
-            song.addEventListener("click", function() {
-                const songSrc = this.getAttribute("data-src");
-                if (wavesurfer) {
-                    wavesurfer.destroy();
-                }
-                wavesurfer = WaveSurfer.create({
-                    container: "#audioPlayer",
-                    backend: "WebAudio",
-                    height: 100,
-                    barWidth: 2,
-                    cursorWidth: 1,
-                    progressColor: "#2196F3",
-                    responsive: true,
-                });
-                wavesurfer.load(songSrc);
-                wavesurfer.on("ready", function() {
-                    audioPlayer.src = songSrc;
-                    audioPlayer.play();
-                    playPauseBtn.textContent = "Pause";
-                });
-            });
-        });
+    // Fungsi untuk mendapatkan waktu saat ini dan menentukan pesan selamat yang sesuai
+    function getGreeting() {
+        var today = new Date();
+        var hour = today.getHours();
+        var greeting = "";
 
-        playPauseBtn.addEventListener("click", function() {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                playPauseBtn.textContent = "Pause";
-            } else {
-                audioPlayer.pause();
-                playPauseBtn.textContent = "Play";
-            }
-        });
-    });
+        if (hour < 12) {
+            greeting = "pagi";
+        } else if (hour < 18) {
+            greeting = "siang";
+        } else if (hour < 22) {
+            greeting = "sore";
+        } else {
+            greeting = "malam";
+        }
+
+        document.getElementById("greeting").textContent = greeting;
+        showSelamatPop();
+    }
+
+    // Panggil fungsi getGreeting saat halaman dimuat
+    window.onload = function() {
+        getGreeting();
+    };
 </script>
 
 </body>
